@@ -1,5 +1,5 @@
 # wzl_projekt
-This is a project for WZL RWTH, which is used for development of an adaptive safety concept for UR10 robots.
+This is a project for WZL RWTH, which is used for the development of an adaptive safety concept for UR10 robots.
 
 ## Installation
 1. To test the project please clone this workspace first.  
