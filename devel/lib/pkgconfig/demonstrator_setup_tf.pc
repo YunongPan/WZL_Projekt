@@ -1,0 +1,8 @@
+prefix=/home/yunong/wzl_projekt/devel
+
+Name: demonstrator_setup_tf
+Description: Description of demonstrator_setup_tf
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
