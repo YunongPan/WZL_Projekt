@@ -37,7 +37,7 @@ Usage please see: https://github.com/ros-teleop/teleop_twist_keyboard
   
 5. Run the distance feedback node  
   
-Open another terminal,  
+Open another terminal, and:  
   
 `source ~/wzl_projekt/devel/setup.bash`  
   
