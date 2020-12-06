@@ -1,2 +1,2 @@
-demonstrator_description:demonstrator_gazebo:demonstrator_preprocessing:demonstrator_rviz:demonstrator_setup_tf
+demonstrator_description:demonstrator_gazebo:demonstrator_preprocessing:demonstrator_rviz:demonstrator_setup_tf:model_mover
 -DCATKIN_DEVEL_PREFIX=/home/yunong/wzl_projekt/devel -DCMAKE_INSTALL_PREFIX=/home/yunong/wzl_projekt/install -G Unix Makefiles

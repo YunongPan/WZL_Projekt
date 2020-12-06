@@ -1,0 +1,8 @@
+prefix=/home/yunong/wzl_projekt/install
+
+Name: model_mover
+Description: Description of model_mover
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

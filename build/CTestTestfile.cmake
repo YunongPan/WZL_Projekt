@@ -7,6 +7,7 @@
 subdirs("gtest")
 subdirs("demonstrator_description")
 subdirs("demonstrator_gazebo")
+subdirs("model_mover")
 subdirs("demonstrator_preprocessing")
 subdirs("demonstrator_rviz")
 subdirs("demonstrator_setup_tf")
