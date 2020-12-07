@@ -1,8 +1,0 @@
-prefix=/home/yunong/wzl_projekt/install
-
-Name: demonstrator_preprocessing
-Description: Description of demonstrator_preprocessing
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

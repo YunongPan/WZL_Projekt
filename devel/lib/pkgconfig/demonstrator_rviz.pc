@@ -1,8 +1,0 @@
-prefix=/home/yunong/wzl_projekt/devel
-
-Name: demonstrator_rviz
-Description: Description of demonstrator_rviz
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
