@@ -27,6 +27,14 @@ This is a project for WZL RWTH, which is used for the development of an adaptive
   
 `export GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:~/wzl_projekt/src/gazebo_plugin/plannar_mover_plugin/build`  
   
+3. Copy 
+
+Open `~/wzl_projekt/src/gazebo_model`. Copy `human_male_1` folder into `~/.gazebo/models`.  
+  
+4. Install teleop_twist_keyboard  
+  
+PLease see: http://wiki.ros.org/teleop_twist_keyboard  
+  
 3. Launch simulation  
   
 `roslaunch demonstrator_gazebo demonstrator_world.launch`  
