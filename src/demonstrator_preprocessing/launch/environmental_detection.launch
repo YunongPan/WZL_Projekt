@@ -1,4 +1,4 @@
 <launch>
- <node pkg="demonstrator_preprocessing" type="environmental_detection_front_test.py" name="environmental_detection_front" output="screen"/>
- <node pkg="demonstrator_preprocessing" type="environmental_detection_rear_test.py" name="environmental_detection_rear" output="screen"/>
+ <node pkg="demonstrator_preprocessing" type="environmental_detection_front.py" name="environmental_detection_front" output="screen"/>
+ <node pkg="demonstrator_preprocessing" type="environmental_detection_rear.py" name="environmental_detection_rear" output="screen"/>
 </launch>
