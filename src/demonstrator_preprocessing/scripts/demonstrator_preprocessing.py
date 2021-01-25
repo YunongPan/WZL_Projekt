@@ -11,8 +11,8 @@ from sensor_msgs.msg import LaserScan
 
 class Demonstrator():
   def __init__(self):
-    self.laser_front_sub = message_filters.Subscriber("laserscan/front", LaserScan)
-    self.laser_rear_sub = message_filters.Subscriber("laserscan/rear", LaserScan)
+    self.laser_front_sub = message_filters.Subscriber("laserscan_filtered/front", LaserScan)
+    self.laser_rear_sub = message_filters.Subscriber("laserscan_filtered/rear", LaserScan)
     self.ts = message_filters.ApproximateTimeSynchronizer([self.laser_front_sub, self.laser_rear_sub], queue_size = 10, slop=0.5)
     self.ts.registerCallback(self.scan_callback)
 
@@ -38,6 +38,9 @@ class Demonstrator():
     rospy.on_shutdown(self.shutdownhook)
 	
   def scan_callback(self, laser_front, laser_rear):
+    laser_front.ranges = [100 if math.isnan(x) else x for x in laser_front.ranges]
+    laser_rear.ranges = [100 if math.isnan(x) else x for x in laser_rear.ranges]
+    
     self.nearest_point_range_front = min(laser_front.ranges)
     self.nearest_point_range_rear = min(laser_rear.ranges)
     if self.nearest_point_range_front < self.nearest_point_range_rear:
@@ -56,7 +59,7 @@ class Demonstrator():
 
 
       try:
-        if self.nearest_point_range_front < self.nearest_point_range_front:
+        if self.nearest_point_range_front < self.nearest_point_range_rear:
           (trans,rot) = self.listener.lookupTransform('/chassis', '/hokuyo_front', rospy.Time(0))
           self.nearest_point_to_chassis_x = self.nearest_point_x + trans[0]
           self.nearest_point_to_chassis_y = self.nearest_point_y + trans[1]
@@ -64,13 +67,14 @@ class Demonstrator():
 
         else:
           (trans,rot) = self.listener.lookupTransform('/chassis', '/hokuyo_rear', rospy.Time(0))
+          self.nearest_point_to_chassis_x = self.nearest_point_x - trans[0]
+          self.nearest_point_to_chassis_y = self.nearest_point_y - trans[1]
+          self.nearest_point_to_chassis = math.sqrt(self.nearest_point_to_chassis_x ** 2 + self.nearest_point_to_chassis_y ** 2)
 
       except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
           continue
    
-      self.nearest_point_to_chassis_x = self.nearest_point_x - trans[0]
-      self.nearest_point_to_chassis_y = self.nearest_point_y - trans[1]
-      self.nearest_point_to_chassis = math.sqrt(self.nearest_point_to_chassis_x ** 2 + self.nearest_point_to_chassis_y ** 2)
+      
       
       if self.nearest_point_to_chassis<5 and self.nearest_point_to_chassis>=2:
         print ("Warning!! Must be slow!! Distance is %.2f." % self.nearest_point_to_chassis) 
@@ -79,7 +83,7 @@ class Demonstrator():
       else:
         print ("No Dangerous. Distance is %.2f." % self.nearest_point_to_chassis) 
 
-      time.sleep(1)
+      time.sleep(0.0001)
       
 
   def shutdownhook(self):

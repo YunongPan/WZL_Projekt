@@ -13,4 +13,4 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GAZEBO_CXX_FLAGS}")
 
 
 add_library(plannar_mover_plugin SHARED plannar_mover.cpp)
-
+add_library(plannar_mover_plugin_right SHARED plannar_mover_right.cpp)
